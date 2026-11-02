@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Résumé — Sanket Sharma</title>
+  <meta name="description" content="Résumé of Sanket Sharma, full-stack developer.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%236b30e3'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='30' fill='%23fff' text-anchor='middle'%3E%7B%7D%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background:
+        radial-gradient(60% 40% at 50% 0%, rgba(107, 48, 227, 0.16), transparent 70%),
+        var(--bg);
+    }
+
+    .resume-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-block: 1.2rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .resume-top .brand__mark {
+      width: 34px;
+      height: 34px;
+      font-size: 0.72rem;
+    }
+
+    .resume-top__actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .resume-top__hint {
+      color: var(--muted-2);
+      font-size: 0.68rem;
+    }
+
+    .resume-top__hint kbd {
+      padding: 0.1rem 0.35rem;
+      border: 1px solid var(--line-strong);
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-soft);
+      font-family: var(--mono);
+      font-size: 0.62rem;
+    }
+
+    .resume-page {
+      padding-block: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .resume {
+      max-width: 920px;
+      margin-inline: auto;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(165deg, rgba(20, 24, 34, 0.92), rgba(10, 13, 19, 0.96));
+      box-shadow: var(--shadow);
+    }
+
+    .resume__head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .resume__id {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+    }
+
+    .resume__id .avatar {
+      width: 70px;
+      height: 70px;
+      font-size: 1.25rem;
+    }
+
+    .resume__id .avatar-ring {
+      flex: none;
+    }
+
+    .resume__name {
+      font-size: clamp(1.6rem, 3vw, 2.15rem);
+      letter-spacing: -0.035em;
+    }
+
+    .resume__role {
+      margin-top: 0.3rem;
+      color: var(--purple-3);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .resume__contact {
+      display: grid;
+      gap: 0.35rem;
+      text-align: right;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .resume__contact a:hover {
+      color: var(--purple-3);
+    }
+
+    .resume__contact .status-pill {
+      justify-self: end;
+      margin-top: 0.35rem;
+    }
+
+    .resume__section {
+      padding-top: 1.6rem;
+    }
+
+    .resume__section h2 {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      color: var(--purple-3);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .resume__section h2::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--line-strong), transparent);
+    }
+
+    .resume__summary {
+      color: var(--text-soft);
+      font-size: 0.88rem;
+      line-height: 1.85;
+      max-width: 62ch;
+    }
+
+    .resume__summary strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .job {
+      display: grid;
+      grid-template-columns: 128px minmax(0, 1fr);
+      gap: 1.25rem;
+      padding-block: 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .job:first-of-type {
+      padding-top: 0.2rem;
+    }
+
+    .job:last-of-type {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .job__when {
+      color: var(--muted-2);
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      line-height: 1.7;
+      padding-top: 0.1rem;
+    }
+
+    .job__when span {
+      display: block;
+      color: var(--gold);
+    }
+
+    .job h3 {
+      font-size: 0.96rem;
+    }
+
+    .job__company {
+      margin-top: 0.15rem;
+      color: var(--muted);
+      font-size: 0.76rem;
+    }
+
+    .job__points {
+      display: grid;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .job__points li {
+      position: relative;
+      padding-left: 0.95rem;
+      color: var(--text-soft);
+      font-size: 0.79rem;
+      line-height: 1.65;
+    }
+
+    .job__points li::before {
+      content: "";
+      position: absolute;
+      left: 0.12rem;
+      top: 0.62em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--purple-3);
+    }
+
+    .resume-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .resume-skill {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .resume-skill p {
+      margin-bottom: 0.25rem;
+      color: var(--text-soft);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .resume-skill small {
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.7;
+    }
+
+    .resume-project {
+      display: grid;
+      gap: 0.2rem;
+      padding-block: 0.6rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .resume-project:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .resume-project strong {
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .resume-project span {
+      color: var(--muted);
+      font-size: 0.75rem;
+      line-height: 1.65;
+    }
+
+    .resume__foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted-2);
+      font-size: 0.7rem;
+    }
+
+    @media (max-width: 700px) {
+      .resume__head {
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+      .resume__contact {
+        text-align: left;
+      }
+      .resume__contact .status-pill {
+        justify-self: start;
+      }
+      .job {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+      }
+      .job__when span {
+        display: inline;
+      }
+      .resume-cols {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+      }
+    }
+
+    @media print {
+      @page {
+        margin: 14mm;
+        size: A4;
+      }
+      body {
+        background: #fff !important;
+        color: #111 !important;
+      }
+      .resume-top,
+      .resume__foot,
+      .resume__contact .status-pill,
+      .avatar-ring {
+        display: none !important;
+      }
+      .resume-page {
+        padding: 0 !important;
+      }
+      .resume {
+        max-width: none;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: #fff !important;
+        box-shadow: none;
+      }
+      .resume__name,
+      .job h3,
+      .resume-project strong {
+        color: #111 !important;
+      }
+      .resume__role,
+      .resume__section h2 {
+        color: #6b30e3 !important;
+      }
+      .resume__summary,
+      .job__points li,
+      .resume-skill small,
+      .resume-project span,
+      .resume__contact,
+      .job__company {
+        color: #333 !important;
+      }
+      .resume__section h2::after {
+        background: #ddd !important;
+      }
+      .job,
+      .resume-project,
+      .resume__head,
+      .resume__foot {
+        border-color: #ddd !important;
+      }
+      .job__points li::before {
+        background: #6b30e3 !important;
+      }
+      .job__when,
+      .job__when span {
+        color: #555 !important;
+      }
+      .resume__section,
+      .job {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="resume-top">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+      <a class="brand" href="index.html">
+        <span class="brand__mark" aria-hidden="true">{ }</span>
+        <span>sanket<span class="brand__dot">.</span>dev</span>
+      </a>
+      <div class="resume-top__actions">
+        <span class="resume-top__hint">Save as PDF: <kbd>Ctrl</kbd> + <kbd>P</kbd> / <kbd>⌘</kbd> + <kbd>P</kbd></span>
+        <a class="btn btn--ghost btn--sm" href="index.html">← Back to portfolio</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="resume-page">
+    <div class="container">
+      <article class="resume">
+        <header class="resume__head">
+          <div class="resume__id">
+            <div class="avatar-ring"><span class="avatar">SS</span></div>
+            <div>
+              <h1 class="resume__name">Sanket Sharma</h1>
+              <p class="resume__role">Full-Stack Developer</p>
+            </div>
+          </div>
+          <div class="resume__contact">
+            <a href="mailto:hello@sanket.dev">hello@sanket.dev</a>
+            <span>Bengaluru, India · IST (UTC+5:30)</span>
+            <a href="https://github.com/">github.com/sanket</a>
+            <a href="https://linkedin.com/">linkedin.com/in/sanket</a>
+            <span class="status-pill"><i aria-hidden="true"></i> Open to work</span>
+          </div>
+        </header>
+
+        <section class="resume__section">
+          <h2>Profile</h2>
+          <p class="resume__summary">
+            Full-stack developer with <strong>3+ years</strong> of experience shipping fast, accessible
+            web products. I work end to end — from data modelling and APIs to the last pixel of UI —
+            and care deeply about performance, accessibility and the small details that make software
+            feel effortless. Comfortable as the first engineering hire or as part of a product team.
+          </p>
+        </section>
+
+        <section class="resume__section">
+          <h2>Experience</h2>
+
+          <div class="job">
+            <div class="job__when">2024 — Present<span>Full-time</span></div>
+            <div>
+              <h3>Full-Stack Developer</h3>
+              <p class="job__company">Lumen Labs · Bengaluru</p>
+              <ul class="job__points">
+                <li>Lead developer on Nimbus, a multi-tenant analytics platform processing 2M+ events per day.</li>
+                <li>Cut p75 dashboard load time from 4.1s to 1.5s and improved activation by 38%.</li>
+                <li>Built a shared component library adopted by every product team; mentor two junior engineers.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="job">
+            <div class="job__when">2022 — 2024<span>Remote</span></div>
+            <div>
+              <h3>Frontend Developer</h3>
+              <p class="job__company">PixelForge Studio</p>
+              <ul class="job__points">
+                <li>Delivered 9 production apps for clients across fintech, health and e-commerce.</li>
+                <li>Maintained an average Lighthouse score of 97 across shipped projects.</li>
+                <li>Created a reusable starter that reduced project setup from 3 days to 4 hours.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="job">
+            <div class="job__when">2021 — 2022<span>Internship</span></div>
+            <div>
+              <h3>Web Development Intern</h3>
+              <p class="job__company">ByteWorks · Bengaluru</p>
+              <ul class="job__points">
+                <li>Owned the internal admin panel and shipped features used daily by the operations team.</li>
+                <li>Fixed accessibility issues across the customer portal, taking it to WCAG 2.1 AA.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="resume__section">
+          <h2>Selected Projects</h2>
+          <div class="resume-cols">
+            <div>
+              <div class="resume-project">
+                <strong>Nimbus — Analytics Platform</strong>
+                <span>Next.js, TypeScript, PostgreSQL, Redis. Multi-tenant dashboards with real-time event ingestion and no-code reporting.</span>
+              </div>
+              <div class="resume-project">
+                <strong>DevConnect — Community Platform</strong>
+                <span>Next.js, Prisma, WebSockets. Threaded discussions, presence and reputation for 10k concurrent readers.</span>
+              </div>
+            </div>
+            <div>
+              <div class="resume-project">
+                <strong>QuickCart — Headless Storefront</strong>
+                <span>React, Stripe, Node.js, Sanity. Instant search, cart recovery and a 99/100 mobile Lighthouse score.</span>
+              </div>
+              <div class="resume-project">
+                <strong>CodeQuest — Offline-first PWA</strong>
+                <span>TypeScript, IndexedDB, Vite. Spaced-repetition DSA practice that works with no signal.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="resume__section">
+          <h2>Skills</h2>
+          <div class="resume-cols">
+            <div class="resume-skill">
+              <p>Frontend</p>
+              <small>React, Next.js, TypeScript, JavaScript (ES2023), HTML5, CSS3, Tailwind CSS, Framer Motion, accessibility (WCAG AA).</small>
+            </div>
+            <div class="resume-skill">
+              <p>Backend &amp; data</p>
+              <small>Node.js, Express, PostgreSQL, MongoDB, Prisma, REST, GraphQL, Redis, authentication and background jobs.</small>
+            </div>
+            <div class="resume-skill">
+              <p>Tooling &amp; cloud</p>
+              <small>Git, GitHub Actions, Docker, Vercel, AWS (S3, EC2, CloudFront), Jest, Playwright, Figma, Lighthouse.</small>
+            </div>
+            <div class="resume-skill">
+              <p>Ways of working</p>
+              <small>Product discovery, design collaboration, code review, mentoring, technical writing and pragmatic documentation.</small>
+            </div>
+          </div>
+        </section>
+
+        <section class="resume__section">
+          <h2>Education</h2>
+          <div class="job" style="border-bottom:0;padding-bottom:0;">
+            <div class="job__when">2017 — 2021</div>
+            <div>
+              <h3>B.E. Computer Science</h3>
+              <p class="job__company">Visvesvaraya Technological University · Bengaluru</p>
+            </div>
+          </div>
+        </section>
+
+        <footer class="resume__foot">
+          <span>© 2026 Sanket Sharma · Résumé</span>
+          <a class="link-arrow" href="index.html">View the portfolio <span aria-hidden="true">↗</span></a>
+        </footer>
+      </article>
+    </div>
+  </main>
+</body>
+</html>
